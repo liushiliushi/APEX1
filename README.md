@@ -12,21 +12,33 @@ pip install -r requirements.txt
 
 Key dependencies:
 - `jericho==3.3.1` — text adventure game environment
-- `openai==2.23.0` — OpenRouter API client
+- `openai==2.23.0` — OpenAI-compatible API client
 - `tiktoken==0.4.0` — tokenizer
 
 ## API Setup
 
-APEX uses [OpenRouter](https://openrouter.ai) to access LLMs. Create a `.env` file based on `.env.example`:
+APEX uses the OpenAI Python client and works with any OpenAI-compatible API endpoint. Create a `.env` file based on `.env.example`:
 
 ```bash
 cp .env.example .env
-# Then fill in your OpenRouter API key
 ```
 
+**Option 1 — OpenAI directly:**
+```
+OPENAI_API_KEY=your_openai_api_key_here
+OPENAI_BASE_URL=https://api.openai.com/v1
+```
+
+**Option 2 — OpenRouter** (access Claude, Gemini, and other models):
 ```
 OPENAI_API_KEY=your_openrouter_api_key_here
 OPENAI_BASE_URL=https://openrouter.ai/api/v1
+```
+
+**Option 3 — Any other OpenAI-compatible endpoint** (Azure OpenAI, local servers via vLLM/Ollama, etc.):
+```
+OPENAI_API_KEY=your_api_key_here
+OPENAI_BASE_URL=https://your-endpoint/v1
 ```
 
 ## Running Experiments
